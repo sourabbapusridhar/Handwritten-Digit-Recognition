@@ -1,3 +1,5 @@
+# Implementation to load MNIST Dataset
+
 from keras.datasets import mnist
 from keras.utils import to_categorical
 from matplotlib import pyplot
