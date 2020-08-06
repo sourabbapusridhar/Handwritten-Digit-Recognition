@@ -4,6 +4,8 @@ import unittest
 
 import src.neural_network as nn
 
+print('Working')
+
 class TestConvolutionalNeuralNetwork(unittest.TestCase):
     """
     Class to perform Unit Tests on Convolutional Neural Network
@@ -23,3 +25,4 @@ class TestConvolutionalNeuralNetwork(unittest.TestCase):
 
     def test_3(self):
         print("Test 1 Called")
+
