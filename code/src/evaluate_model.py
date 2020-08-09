@@ -1,7 +1,7 @@
 # Implementation of Test Functions to Evaluate Model
 
 from sklearn.model_selection import KFold
-from neural_network import define_model
+from src import neural_network
 from matplotlib import pyplot
 from numpy import mean, std
 
@@ -11,7 +11,7 @@ def evaluate_model(dataX, dataY, n_folds=5):
 	for train_ix, test_ix in kfold.split(dataX):
 		# print(train_ix, '-', test_ix, '\n')
 		# print(len(train_ix), '-', len(test_ix), '\n')
-		model = define_model()
+		model = neural_network.define_model()
 		trainX, trainY, testX, testY = dataX[train_ix], dataY[train_ix], dataX[test_ix], dataY[test_ix]
 		history = model.fit(trainX, trainY, epochs=5, batch_size=32, validation_data=(testX, testY), verbose=0)
 		_, acc = model.evaluate(testX, testY, verbose=0)
