@@ -19,7 +19,7 @@ def run_save_model():
 	trainX, trainY, testX, testY = dataset.load()
 	trainX, testX = prepare_pixel_data.prepare_pixel_data(trainX, testX)
 	model = neural_network.define_model()
-	model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=0)
+	model.fit(trainX, trainY, epochs=10, batch_size=32, verbose=1)
 	model.save('final_model.h5')
 
 # Evaluate final model
@@ -29,5 +29,5 @@ def run_eval_final_model():
 	trainX, testX = prepare_pixel_data.prepare_pixel_data(trainX, testX)
 	model = neural_network.define_model()
 	model = load_model('final_model.h5')
-	_, acc = model.evaluate(testX, testY, verbose=0)
+	_, acc = model.evaluate(testX, testY, verbose=1)
 	print('> %.3f' % (acc * 100.0))
