@@ -3,13 +3,28 @@
 The goal of this project is to recognition digits in images. The project is based on multi-scale processing with Convolutional Neural Networks. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
 
 ## Dependencies
-*To be added*
+* Tensorflow
 
 ## Installation Guide
-*To be added*
+To install the anaconda environment, navigate to the repository folder, and run the following command in the command prompt:
+
+`conda env create -f environment.yml`
 
 ## Execution Guide
-*To be added*
+1. To activate the Conda environment, please run the following command in the command prompt:
+
+`conda activate conv_nets`
+
+2. *To be added*
+
+3. To deactivate the Conda environment, please run the following command in the command prompt:
+
+`conda deactivate`
+
+## Clean-up Guide
+To remove the anaconda environment, navigate to the repository folder, and run the following command in the command prompt:
+
+`conda remove --name conv_nets --all`
 
 ## Authors
 * Raghuram Shankar
