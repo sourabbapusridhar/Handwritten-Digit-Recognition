@@ -4,8 +4,9 @@
 
 The goal of this project is to recognition digits in images. The project is based on multi-scale processing with Convolutional Neural Networks. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
 
-## Dependencies
-* Tensorflow
+## Requirements
+The code is based on Python3 (>=3.7). There are a few dependencies to run the code. The major libraries are listed as follows:
+* Tensorflow (>=2.3.0)
 
 ## Installation Guide
 To install the anaconda environment, navigate to the repository folder, and run the following command in the command prompt:
