@@ -21,29 +21,34 @@ np.random.seed(SEED)
 
 def main(configuration):
     """
-    """
+    Entry point for training the experiment
+
+    Parameters
+    ----------
+    configuration   : dict
+                      User defined configuration for training the experiment
+
+    Returns
+    -------
+    None
     """
     logger = configuration.get_logger("train")
 
     # Setup Data loader Instances
-    """
     dataLoader = configuration.initialize_object("dataLoader", dataModule)
-    """
     validationDataLoader = dataLoader.split_validation()
 
     # Build Model Architecture and print to console
-    model = configuration.initialize_object("arch", architectureModule)
+    model = configuration.initialize_object("architecture", architectureModule)
     logger.info(model)
 
     # Prepare for (multi-device) GPU training
-    device, deviceIds = prepare_device(configuration["n_gpu"])
+    device, deviceIds = prepare_device(configuration["numberOfGpus"])
     model = model.to(device)
     if len(deviceIds) > 1:
         model = torch.nn.DataParallel(model, device_ids = deviceIds)
 
-    print("device: {}".format(device))
-    print("deviceIds: {}".format(deviceIds))
-
+    """"
     # Get function handles of loss and metrics
     criterion = getattr(lossModule, configuration["loss"])
     metrics = [getattr(metricModule, met) for met in configuration["metrics"]]
@@ -64,10 +69,11 @@ def main(configuration):
     """
 
 if __name__ == "__main__":
-    args = argparse.ArgumentParser(description="Script to train Graph Neural Network")
+    args = argparse.ArgumentParser(description="Script to train handwritten digit recognition using CNNs")
     args.add_argument("-c", "--config", default=None, type=str, help="Path to the configuration file (Default: None)")
     args.add_argument("-r", "--resume", default=None, type=str, help="Path to the latest checkpoint (Default: None)")
     args.add_argument("-d", "--device", default=None, type=str, help="Index of the GPU used (Default: All)")
+
 
     configuration = ConfigParser.from_args(args)
     main(configuration)

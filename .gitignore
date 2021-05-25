@@ -4,3 +4,6 @@ data/*
 
 # Ignore Python Output Files
 __pycache__
+
+# Ignore Saved Directory
+saved

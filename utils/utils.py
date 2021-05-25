@@ -19,7 +19,7 @@ class MetricTracker:
         ----------
         self    : MetricTracker
                   Instance of the class
-        *keys   : Multiple
+        *keys   : tuple
                   Multiple number of non-keyword arguments
         writer  : SummaryWriter
                   Writer to log data for consumption and visualization by TensorBoard
@@ -62,7 +62,7 @@ class MetricTracker:
         value           : Multiple
                           Value of Metric
         numberOfMetrics : int
-                          Number of metrics
+                          Number of metrics (Default value: 1)
 
         Returns
         -------
@@ -84,10 +84,6 @@ class MetricTracker:
                           Instance of the class
         key             : Multiple
                           Type of metric
-        value           : Multiple
-                          Value of Metric
-        numberOfMetrics : int
-                          Number of metrics
 
         Returns
         -------
@@ -216,46 +212,3 @@ def prepare_device(numberOfGpusToBeUsed):
     gpuIdList = list(range(numberOfGpusToBeUsed))
 
     return device, gpuIdList
-
-
-def jaad_annotation_converter(dataset):
-    '''
-    Converts the jaad dataset from the default pedestrian oriented ordet to a frame-by-frame order.
-
-    :param dataset (dict): jaad annotatiosn that need to be converted from default to frame-by-frame
-
-    :return (dict): jaad annotations in on a complete frame-by-frame order
-    '''
-    new_annotations = {}
-    for video_name, video in dataset.items():
-        video_dict = {}
-        video_dict.update({'width': video.get('width')})
-        video_dict.update({'height': video.get('height')})
-        video_dict.update({'num_frames': video.get('num_frames')})
-        all_frames_dict = {}
-        for frame_no in range(video.get('num_frames')):
-            frame_dict = {}
-            for ped_id, ped in video.get('ped_annotations').items():
-                ped_id_dict = {}
-                if frame_no in ped.get('frames') and 'behavior' in ped.keys() and 'cross' in ped.get('behavior',
-                                                                                                     {}).keys():
-                    frame_index = ped.get('frames').index(frame_no)
-                    for ped_anno, ped_anno_value in ped.items():
-                        if not (type(ped_anno_value) is dict or type(ped_anno_value) is list):
-                            ped_id_dict.update({ped_anno: ped_anno_value})
-                        elif type(ped_anno_value) is list:
-                            ped_id_dict.update({ped_anno: ped_anno_value[frame_index]})
-                        elif type(ped_anno_value) is dict:
-                            ped_id_sub_dict = {}
-                            for ped_anno_sub, ped_anno_sub_value in ped_anno_value.items():
-                                if type(ped_anno_sub_value) is list:
-                                    ped_id_sub_dict.update({ped_anno_sub: ped_anno_sub_value[frame_index]})
-                                else:
-                                    ped_id_sub_dict.update({ped_anno_sub: ped_anno_sub_value})
-                            ped_id_dict.update({ped_anno: ped_id_sub_dict})
-                    frame_dict.update({ped_id: ped_id_dict})
-
-                all_frames_dict.update({frame_no: frame_dict})
-        video_dict.update({'frames': all_frames_dict})
-        new_annotations.update({video_name: video_dict})
-    return new_annotations

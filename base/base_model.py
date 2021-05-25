@@ -41,7 +41,7 @@ class BaseModel(nn.Module):
         self    : BaseModel
                   Instance of the class
 
-        *inputs : Multiple
+        *inputs : tuple
                   Variable number of non-keyword arguments
 
         Returns

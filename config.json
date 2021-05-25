@@ -15,7 +15,7 @@
             "batchSize": 128,
             "shuffle": true,
             "validationSplit": 0.1,
-            "numberOfWorkers": 2
+            "numberOfWorkers": 1
         }
     },
     "optimizer": 
