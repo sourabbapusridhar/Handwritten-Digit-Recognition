@@ -7,7 +7,7 @@ from abc import abstractmethod, ABCMeta
 class BaseModel(nn.Module):
     """
     Base class implementation for all models. 
-    The class is inherited from nn.Module
+    The class is inherited from nn.Module.
     """
     def __str__(self):
         """
@@ -25,6 +25,7 @@ class BaseModel(nn.Module):
                   String representation of the class
 
         """
+        # Calculate total number of trainable parameters for printing
         modelParameters = filter(lambda p: p.requires_grad, self.parameters())
         params = sum([np.prod(p.size()) for p in modelParameters])
 
@@ -48,5 +49,4 @@ class BaseModel(nn.Module):
         -------
         None
         """
-
         raise NotImplementedError

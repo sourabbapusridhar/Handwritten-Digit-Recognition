@@ -8,11 +8,11 @@ from torch.utils.data.sampler import SubsetRandomSampler
 class BaseDataLoader(DataLoader):
     """
     Base class implementation for all data loaders. 
-    The class is inherited from nn.Module
+    The class is inherited from nn.Module.
     """
     def __init__(self, dataset, batchSize, shuffle, validationSplit, numberOfWorkers, collateFunction=default_collate):
         """
-        Method to initialize an object of type BaseDataLoader
+        Method to initialize an object of type BaseDataLoader.
 
         Parameters
         ----------

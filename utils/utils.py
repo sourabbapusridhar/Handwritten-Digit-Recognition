@@ -9,7 +9,7 @@ from collections import OrderedDict
 
 class MetricTracker:
     """
-    Class implementation for tracking all the metrics
+    Class implementation for tracking all the metrics.
     """
     def __init__(self, *keys, writer=None):
         """
@@ -71,7 +71,7 @@ class MetricTracker:
         if self.writer is not None:
             self.writer.add_scalar(key, value)
         self.data.total[key] += value * numberOfMetrics
-        self.data.counts[key] = numberOfMetrics
+        self.data.counts[key] += numberOfMetrics
         self.data.average[key] = self.data.total[key] / self.data.counts[key]
     
     def average(self, key):
@@ -166,7 +166,7 @@ def write_json(content, fileName):
 
 def infinte_loop(dataLoader):
     """
-    Wrapper function for endless data loader
+    Wrapper function for endless data loader.
 
     Parameters
     ----------
@@ -208,7 +208,7 @@ def prepare_device(numberOfGpusToBeUsed):
                 "Switching to {} number of GPUs for training!".format(numberOfGpusToBeUsed, numberOfGpusAvailable, numberOfGpusAvailable))
         numberOfGpusToBeUsed = numberOfGpusAvailable
 
-    device = torch.device('cuda' if numberOfGpusToBeUsed > 0 else 'cpu') #TODO: To be checked if this is correct!
+    device = torch.device('cuda' if numberOfGpusToBeUsed > 0 else 'cpu')
     gpuIdList = list(range(numberOfGpusToBeUsed))
 
     return device, gpuIdList

@@ -11,7 +11,7 @@
         "type": "MnistDataLoader",
         "args":
         {
-            "dataDirectory": "data/",
+            "dataDirectory": "data\\",
             "batchSize": 128,
             "shuffle": true,
             "validationSplit": 0.1,
@@ -23,9 +23,9 @@
         "type": "Adam",
         "args":
         {
-            "learningRate": 0.001,
-            "weightDecay": 0,
-            "amsGrad": true
+            "lr": 0.001,
+            "weight_decay": 0,
+            "amsgrad": true
         }
     },
     "loss": "negative_likelihood_loss",
@@ -35,17 +35,17 @@
     ],
     "learningRateScheduler": 
     {
-        "type": "StepLearningRate",
+        "type": "StepLR",
         "args": 
         {
-            "stepSize": 50,
+            "step_size": 50,
             "gamma": 0.1
         }
     },
     "trainer": 
     {
-        "epochs": 100,
-        "saveDirectory": "saved/",
+        "epochs": 50,
+        "saveDirectory": "saved\\",
         "savePeriod": 1,
         "verbosity": 2,
         "monitor": "min val_loss",

@@ -15,7 +15,7 @@ class ConfigParser:
     """
     def __init__(self, userConfiguration, resume=None, modification=None, runId=None):
         """
-        Method to initialize an object of type ConfigParser
+        Method to initialize an object of type ConfigParser.
 
         Parameters
         ----------
@@ -145,32 +145,13 @@ class ConfigParser:
         object      : Multiple
                       Initialized object
         """
-        print("\n\n********In the function initialize_object!********")
-
-        print("name: {}".format(name))
-        print("type of name: {}".format(type(name)))
-
-        print("module: {}".format(module))
-        print("type of module: {}".format(type(module)))
-
-        print("args: {}".format(args))
-        print("type of args: {}".format(type(args)))
-
-        print("kwargs: {}".format(kwargs))
-        print("type of kwargs: {}".format(type(kwargs)))
-
         # Get attributes of the instance using the __getitem__() method defined below
         moduleName = self[name]["type"]
         moduleArguments = dict(self[name]["args"])
 
-        print("moduleName: {}".format(moduleName))
-        print("type of moduleName: {}".format(type(moduleName)))
-
-        print("moduleArguments: {}".format(moduleArguments))
-        print("type of moduleArguments: {}".format(type(moduleArguments)))
-
         assert all([k not in moduleArguments for k in kwargs]), "Overwriting kwargs given in configuration file is not allowed"
         moduleArguments.update(kwargs)
+
         return getattr(module, moduleName)(*args, **moduleArguments)
 
     def initialize_function(self, name, module, *args, **kwargs):
@@ -212,7 +193,7 @@ class ConfigParser:
 
     def __getitem__(self, name):
         """
-        Method to access value of a specific key from the configuration property of the instance 
+        Method to access value of a specific key from the configuration property of the instance.
         
         Parameters
         ----------
@@ -254,7 +235,7 @@ class ConfigParser:
     @property
     def config(self):
         """
-        Method to return the configuration property of the class ConfigParser
+        Method to return the configuration property of the class ConfigParser.
         
         Parameters
         ----------
@@ -271,7 +252,7 @@ class ConfigParser:
     @property
     def output_directory(self):
         """
-        Method to return the outputDirectory property of the class ConfigParser
+        Method to return the outputDirectory property of the class ConfigParser.
         
         Parameters
         ----------
@@ -288,7 +269,7 @@ class ConfigParser:
     @property
     def log_directory(self):
         """
-        Method to return the logDirectory property of the class ConfigParser
+        Method to return the logDirectory property of the class ConfigParser.
         
         Parameters
         ----------
@@ -304,7 +285,7 @@ class ConfigParser:
 
 def update_configuration(userConfiguration, modification):
     """
-    Function to update user defined configuration
+    Function to update user defined configuration.
 
     Parameters
     ----------
@@ -328,7 +309,7 @@ def update_configuration(userConfiguration, modification):
 
 def get_option_name(flags):
     """
-    Function to get option names from the user defined arguments
+    Function to get option names from the user defined arguments.
 
     Parameters
     ----------
@@ -346,7 +327,7 @@ def get_option_name(flags):
 
 def set_key_value_by_path(tree, keys, value):
     """
-    Function to set a key value pair in a tree by path
+    Function to set a key value pair in a tree by path.
 
     Parameters
     ----------
@@ -366,7 +347,7 @@ def set_key_value_by_path(tree, keys, value):
 
 def get_key_by_path(tree, keys):
     """
-    Function to get keys from a tree by path
+    Function to get keys from a tree by path.
 
     Parameters
     ----------

@@ -21,7 +21,7 @@ np.random.seed(SEED)
 
 def main(configuration):
     """
-    Entry point for training the experiment
+    Entry point for training the experiment.
 
     Parameters
     ----------
@@ -48,15 +48,14 @@ def main(configuration):
     if len(deviceIds) > 1:
         model = torch.nn.DataParallel(model, device_ids = deviceIds)
 
-    """"
     # Get function handles of loss and metrics
     criterion = getattr(lossModule, configuration["loss"])
-    metrics = [getattr(metricModule, met) for met in configuration["metrics"]]
+    metrics = [getattr(metricModule, individualMetric) for individualMetric in configuration["metrics"]]
 
     # Build Optimizer, Learning Rate Scheduler and delete every lines containing lr_scheduler for disabling scheduler
     trainiableParameters = filter(lambda p: p.requires_grad, model.parameters())
     optimizer = configuration.initialize_object("optimizer", torch.optim, trainiableParameters)
-    learningRateScheduler = configuration.initialize_object("lr_scheduler", torch.optim.lr_scheduler, optimizer)
+    learningRateScheduler = configuration.initialize_object("learningRateScheduler", torch.optim.lr_scheduler, optimizer)
 
     trainer = Trainer(model, criterion, metrics, optimizer,
                       configuration=configuration,
@@ -66,13 +65,12 @@ def main(configuration):
                       learningRateScheduler=learningRateScheduler)
 
     trainer.train()
-    """
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser(description="Script to train handwritten digit recognition using CNNs")
     args.add_argument("-c", "--config", default=None, type=str, help="Path to the configuration file (Default: None)")
     args.add_argument("-r", "--resume", default=None, type=str, help="Path to the latest checkpoint (Default: None)")
-    args.add_argument("-d", "--device", default=None, type=str, help="Index of the GPU used (Default: All)")
+    args.add_argument("-d", "--device", default=None, type=str, help="Index of the GPU used (Default: None)")
 
 
     configuration = ConfigParser.from_args(args)
