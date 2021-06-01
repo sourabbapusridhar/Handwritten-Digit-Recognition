@@ -1,8 +1,8 @@
-# Handwritten Digit Recognition
+# Handwritten Digit Recognition Using CNNs
 
 [![Project Status: Active – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-The goal of this project is to recognize digits in images. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
+The goal of this project is to recognize digits in images using Convolutional Neural Networks (CNNs). The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
 
 <img src="https://github.com/sourabbapusridhar/handwritten-digit-recognition-using-cnns/blob/master/output/mnist-dataset.gif?raw=true" width="1280">
 
@@ -20,6 +20,7 @@ The code is based on Python3 (>=3.8). There are a few dependencies to run the co
 * PyTorch >= 1.8.0
 * Tqdm >= 4.60.0
 * Tensorboard >= 2.5.0
+* Pandas >= 1.2.0
 
 ## Installation Guide
 To install the anaconda environment, navigate to the repository folder, and run the following command in the terminal:
