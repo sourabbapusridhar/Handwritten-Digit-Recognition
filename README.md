@@ -32,7 +32,7 @@ $conda env create -f environment.yml
 1. To activate the Conda environment, please run the following command in the terminal:
 
 ```
-$conda activate CNN
+$conda activate cnns
 ```
 
 2. To train the neural network based on the `.json` configuration file, please run the following command in the terminal:
@@ -82,7 +82,7 @@ The majority of the codebase for this project is taken from the [PyTorch Templat
 To remove the anaconda environment, navigate to the repository folder, and run the following command in the terminal:
 
 ```
-$conda remove --name CNN --all
+$conda remove --name cnns --all
 ```
 
 ## Acknowledgements
