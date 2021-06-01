@@ -1,33 +1,81 @@
-[![Project Status: Active – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-
 # Handwritten Digit Recognition
 
-The goal of this project is to recognition digits in images. The project is based on multi-scale processing with Convolutional Neural Networks. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
+[![Project Status: Active – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+
+The goal of this project is to recognize digits in images. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
 
 ## Requirements
-The code is based on Python3 (>=3.7). There are a few dependencies to run the code. The major libraries are listed as follows:
-* Tensorflow (>=2.3.0)
+The code is based on Python3 (>=3.8). There are a few dependencies to run the code. The major libraries are listed as follows:
+* PyTorch >= 1.8.0
+* Tqdm >= 4.60.0
+* Tensorboard >= 2.5.0
 
 ## Installation Guide
-To install the anaconda environment, navigate to the repository folder, and run the following command in the command prompt:
+To install the anaconda environment, navigate to the repository folder, and run the following command in the terminal:
 
-`conda env create -f environment.yml`
+```
+$conda env create -f environment.yml
+```
 
 ## Execution Guide
-1. To activate the Conda environment, please run the following command in the command prompt:
+1. To activate the Conda environment, please run the following command in the terminal:
 
-`conda activate conv_nets`
+```
+$conda activate CNN
+```
 
-2. *To be added*
+2. To train the neural network based on the `.json` configuration file, please run the following command in the terminal:
 
-3. To deactivate the Conda environment, please run the following command in the command prompt:
+```
+$python train.py --config config.json
+```
 
-`conda deactivate`
+**Note:** The `.json` configuration file can be modified for convenient parameter tuning.
+
+4. To resume the training of the neural network from a previously saved checkpoint, please run the following command in the terminal:
+
+```
+$python train.py --resume path/to/checkpoint
+```
+
+5. To enable multi-GPU training, the `numberOfGpus` argument in the configuration file can be set to a higher number. If the network is configured to use a smaller number of GPUs than the number of GPUs available in the system, the first `n` devices would be used by default. To specify the indices of the available CUDA devices, please run the following command in the terminal:
+
+```
+$python train.py --device 1,2 --config config.json
+```
+
+6. To test the trained neural network, please run the file `test.py` by passing the path to the trained checkpoint in the terminal:
+
+```
+$python test.py --resume path/to/trained/checkpoint 
+```
+7. To deactivate the Conda environment, please run the following command in the terminal:
+
+```
+$conda deactivate
+```
+
+## Visualization Guide
+To visualize the training progress, the `tensorboard` argument in the configuration file must be set to `True` before training the neural network. The training progress can be visualized by running the following command in the terminal:
+
+```
+$tensorboard --logdir path/to/saved/log
+```
+
+The command would open localhost at `http://localhost:6006`
+
+## Customization Guide
+The majority of the codebase for this project is taken from the [PyTorch Template repository](https://github.com/victoresque/pytorch-template.git). For additional information on how to customize the project, please refer to the instructions available in the repository [[Link](https://github.com/victoresque/pytorch-template/blob/master/README.md)].
 
 ## Clean-up Guide
-To remove the anaconda environment, navigate to the repository folder, and run the following command in the command prompt:
+To remove the anaconda environment, navigate to the repository folder, and run the following command in the terminal:
 
-`conda remove --name conv_nets --all`
+```
+$conda remove --name CNN --all
+```
+
+## Acknowledgements
+The majority of the codebase for this project is taken from the [PyTorch Template repository](https://github.com/victoresque/pytorch-template.git).
 
 ## Authors
 * Raghuram Shankar
