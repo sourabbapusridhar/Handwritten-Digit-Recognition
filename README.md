@@ -4,6 +4,17 @@
 
 The goal of this project is to recognize digits in images. The network is trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/).
 
+<img src="https://github.com/sourabbapusridhar/handwritten-digit-recognition-using-cnns/blob/master/output/mnist-dataset.gif?raw=true" width="1280">
+
+## Dataset
+### MNIST Database of Handwritten Digits [[Link](http://yann.lecun.com/exdb/mnist/)]
+The MNIST database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training various image processing systems. Since its release in 1999, this classic dataset of handwritten images has served as the basis for benchmarking classification algorithms. The MNIST database contains 60,000 training images and 10,000 testing images. The images are small square 28×28 pixel grayscale images of handwritten single digits between 0 and 9.
+
+- **Training Set Images:** http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+- **Training Set Labels:** http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+- **Test Set Images:** http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+- **Test Set Labels:** http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+
 ## Requirements
 The code is based on Python3 (>=3.8). There are a few dependencies to run the code. The major libraries are listed as follows:
 * PyTorch >= 1.8.0

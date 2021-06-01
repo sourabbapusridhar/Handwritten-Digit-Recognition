@@ -45,7 +45,7 @@
     "trainer": 
     {
         "epochs": 50,
-        "saveDirectory": "saved\\",
+        "saveDirectory": "output\\",
         "savePeriod": 1,
         "verbosity": 2,
         "monitor": "min val_loss",

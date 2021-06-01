@@ -5,5 +5,7 @@ data/*
 # Ignore Python Output Files
 __pycache__
 
-# Ignore Saved Directory
-saved
+# Ignore Contents of the Output Folder (Except existing files)
+output/*
+!output/README.md
+!output/mnist-dataset.gif
